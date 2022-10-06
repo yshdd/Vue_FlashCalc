@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- <script src="https://unpkg.com/vue@next"></script>CDN版のVue -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<link rel="stylesheet" href="static/style.css">
+<title>Vueでフラッシュ暗算</title>
+</head>
+<body>
+
+<div id="app">
+    <div class="container text-center">
+
+        <div class="mx-auto my-4">
+            <section class="todo-form">
+            <div class="d-block mx-auto mb-2 mx-sm-4"><h2>フラッシュ暗算(足し算)</h2></div>
+            <form name="flash">
+            
+            <input type="text" name="set1" size="3" value="1">桁の数字を
+            <input type="text" name="set2" size="3" value="1">個、
+            <input type="text" name="set3" size="5" value="0.5">秒間隔で表示します
+            <input type="button" name="b_start" value="スタート" class="btn btn-primary mt-auto" 
+            v-bind:disabled="isActive" v-on:click="StartFlash">
+            </form>
+            </section>
+        </div>
+
+        <div class="mx-auto text-center w-50">
+            <!-- <div class="border border-dark" style="height: 150px; width:250px;"> -->
+            <div class="border border-dark my-3" >
+                <div class="d-flex align-items-center justify-content-center " style="height:150px;">
+                    <p class="display-1">{{ Num }}</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="d-block mx-auto my-3">
+            <form ref="ans" name="ans">
+                
+                <input class="col-md-2" type="text" name="usrAns">
+                <input type="button" name="check_btn" value="答え合わせ" v-on:click="checkAns">
+            </form>
+            
+        </div>
+
+        <div class="mx-auto">
+            <form name="clear">
+                <input type="button" name="clear_btn" value="もう一回" v-on:click="reset">
+            </form>
+            <div class="my-5">
+                <h1>{{ TorF }}</h1>
+                <h2>{{ msg }}</h2>
+            </div>
+            
+        </div>
+        
+        
+
+    </div>
+
+
+</div>
+
+<script src="static/main.js"></script>
+</body>
+</html>
